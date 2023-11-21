@@ -16,6 +16,12 @@ export default function Home() {
     setUser({ ...user, tasks: newTasks });
   };
 
+  const handleDelete = (index: number) => {
+    const newTasks = [...user.tasks];
+    newTasks.splice(index, 1);
+    setUser({ ...user, tasks: newTasks });
+  };
+
   return (
     <main
       className={`flex flex-col min-h-screen p-24 ${inter.className}`}
@@ -27,7 +33,7 @@ export default function Home() {
             <h2>{task.title}</h2>
             <p>{task.description}</p>
             <p>{task.points}</p>
-            <AddTaskDialog taskToEdit={task} onEdit={handleEdit} index={index} />
+            <AddTaskDialog taskToEdit={task} onEdit={handleEdit} onDelete={handleDelete} index={index} />
           </div>
         ))}
       </div>
