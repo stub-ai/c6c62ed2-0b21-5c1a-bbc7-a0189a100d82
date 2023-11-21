@@ -1,11 +1,17 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
+export type SubTask = {
+  title: string;
+  status: string;
+};
+
 export type Task = {
   title: string;
   description: string;
   points: number;
   status: string;
   dueDate: string;
+  subTasks: SubTask[];
 };
 
 type User = {
