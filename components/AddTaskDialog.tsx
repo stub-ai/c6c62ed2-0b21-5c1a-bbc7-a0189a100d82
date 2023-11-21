@@ -6,9 +6,10 @@ interface AddTaskDialogProps {
   onEdit?: (task: Task, index: number) => void;
   onDelete?: (index: number) => void;
   index?: number;
+  onCreate?: (task: Task) => void;
 }
 
-const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, onDelete, index }) => {
+const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, onDelete, index, onCreate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [task, setTask] = useState<Task>(taskToEdit || { title: '', description: '', points: 0, status: '', dueDate: '', subTasks: [] });
 
@@ -28,6 +29,8 @@ const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, onDel
     e.preventDefault();
     if (onEdit && typeof index === 'number') {
       onEdit(task, index);
+    } else if (onCreate) {
+      onCreate(task);
     }
     handleClose();
   };
