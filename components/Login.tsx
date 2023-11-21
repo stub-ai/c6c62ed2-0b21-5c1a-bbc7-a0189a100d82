@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   // Now you can use `user` and `setUser` in this component
 
   return (
-    <div>
+    <div className="flex justify-center items-center h-screen bg-gray-200">
       {/* Login form goes here */}
     </div>
   );
