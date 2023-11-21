@@ -1,5 +1,5 @@
-import React from 'react';
-import { Task } from './UserContext';
+import React, { useContext } from 'react';
+import { Task, UserContext } from './UserContext';
 import AddTaskDialog from './AddTaskDialog';
 
 interface TaskItemProps {
@@ -10,6 +10,14 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, index, onEdit, onDelete }) => {
+  const { updateUserPointsAndLevel } = useContext(UserContext);
+
+  const handleTaskCompletion = () => {
+    if (task.status === 'Complete') {
+      updateUserPointsAndLevel(task);
+    }
+  };
+
   return (
     <div className="flex justify-between items-center p-4 bg-white shadow rounded mb-4">
       <div>
@@ -25,6 +33,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, onEdit, onDelete }) =>
       </div>
       <div>
         <AddTaskDialog taskToEdit={task} onEdit={onEdit} onDelete={onDelete} index={index} />
+        <button onClick={handleTaskCompletion} className="ml-2 bg-green-500 px-4 py-2 rounded">Complete Task</button>
       </div>
     </div>
   );
