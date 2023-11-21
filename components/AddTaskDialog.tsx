@@ -26,8 +26,12 @@ const AddTaskDialog: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add task to user's tasks
-    // setUser({ ...user, tasks: [...user.tasks, task] });
+    setUser(prevUser => ({
+      ...prevUser,
+      tasks: [...prevUser.tasks, task],
+      points: prevUser.points + task.points
+    }));
+    setTask({ title: '', description: '', points: 0 });
     handleClose();
   };
 
