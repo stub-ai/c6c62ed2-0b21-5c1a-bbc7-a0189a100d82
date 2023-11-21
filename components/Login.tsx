@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 type Subtask = {
   id: number;
   title: string;
-  completed: boolean;
+  points: number;
 };
 
 type Task = {
