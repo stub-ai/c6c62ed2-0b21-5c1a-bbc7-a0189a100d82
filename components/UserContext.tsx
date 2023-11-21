@@ -15,12 +15,13 @@ export type Task = {
 };
 
 export type User = {
+  username: string;
   points: number;
   level: number;
   tasks: Task[];
 };
 
-const defaultUser: User = { points: 0, level: 1, tasks: [] };
+const defaultUser: User = { username: '', points: 0, level: 1, tasks: [] };
 
 export const UserContext = createContext<{
   user: User;
