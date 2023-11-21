@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
-import AddTaskDialog from './AddTaskDialog';
-import Link from 'next/link';
+import ShopDialog from './ShopDialog';
 
 const Header: React.FC = () => {
   const { user } = useContext(UserContext);
@@ -17,10 +16,7 @@ const Header: React.FC = () => {
           <p>Points: {user.points}</p>
           <p>Level: {user.level}</p>
         </div>
-        <AddTaskDialog />
-        <Link href="/shop">
-          <a className="bg-yellow-500 px-4 py-2 rounded ml-2">Shop</a>
-        </Link>
+        <ShopDialog />
       </div>
     </header>
   );
