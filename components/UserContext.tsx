@@ -1,6 +1,6 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
-type Task = {
+export type Task = {
   title: string;
   description: string;
   points: number;

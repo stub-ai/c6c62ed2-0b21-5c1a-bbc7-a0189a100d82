@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from './UserContext';
+import { UserContext, Task } from './UserContext';
 
-interface Task {
-  title: string;
-  description: string;
-  points: number;
+interface AddTaskDialogProps {
+  taskToEdit?: Task;
+  onEdit?: (task: Task, index: number) => void;
+  index?: number;
 }
 
-const AddTaskDialog: React.FC = () => {
+const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, index }) => {
   const { user, setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [task, setTask] = useState<Task>({ title: '', description: '', points: 0 });
+  const [task, setTask] = useState<Task>(taskToEdit || { title: '', description: '', points: 0 });
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -26,11 +26,15 @@ const AddTaskDialog: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setUser(prevUser => ({
-      ...prevUser,
-      tasks: [...prevUser.tasks, task],
-      points: prevUser.points + task.points
-    }));
+    if (onEdit && typeof index === 'number') {
+      onEdit(task, index);
+    } else {
+      setUser(prevUser => ({
+        ...prevUser,
+        tasks: [...prevUser.tasks, task],
+        points: prevUser.points + task.points
+      }));
+    }
     setTask({ title: '', description: '', points: 0 });
     handleClose();
   };
