@@ -17,6 +17,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, onEdit, onDelete }) =>
         <p>Status: {task.status}</p>
         <p>Points: {task.points}</p>
         <p>Due date: {task.dueDate}</p>
+        <div className="pl-4">
+          {task.subTasks.map((subTask, subIndex) => (
+            <p key={subIndex} className={`text-sm ${task.status === 'Incomplete' ? 'text-gray-500' : ''}`}>{subTask.title} - {subTask.status}</p>
+          ))}
+        </div>
       </div>
       <div>
         <AddTaskDialog taskToEdit={task} onEdit={onEdit} onDelete={onDelete} index={index} />
