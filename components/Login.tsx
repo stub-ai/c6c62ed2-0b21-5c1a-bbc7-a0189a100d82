@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 
-type Task = {
+type Subtask = {
   id: number;
   title: string;
   completed: boolean;
+};
+
+type Task = {
+  id: number;
+  title: string;
+  description: string;
+  dueDate: Date;
+  status: 'pending' | 'completed' | 'overdue';
+  subtaskArray: Subtask[];
+  points: number;
 };
 
 type User = {
