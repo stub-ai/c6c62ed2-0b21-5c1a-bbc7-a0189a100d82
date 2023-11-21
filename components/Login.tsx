@@ -1,29 +1,10 @@
-import React, { useState } from 'react';
-
-type Subtask = {
-  id: number;
-  title: string;
-  points: number;
-};
-
-type Task = {
-  id: number;
-  title: string;
-  description: string;
-  dueDate: Date;
-  status: 'pending' | 'completed' | 'overdue';
-  subtaskArray: Subtask[];
-  points: number;
-};
-
-type User = {
-  points: number;
-  level: number;
-};
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
 
 const Login: React.FC = () => {
-  const [taskArray, setTaskArray] = useState<Task[]>([]);
-  const [userInfo, setUserInfo] = useState<User>({ points: 0, level: 1 });
+  const { user, setUser } = useContext(UserContext);
+
+  // Now you can use `user` and `setUser` in this component
 
   return (
     <div>
