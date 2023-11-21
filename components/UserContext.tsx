@@ -14,7 +14,7 @@ export type Task = {
   subTasks: SubTask[];
 };
 
-type User = {
+export type User = {
   points: number;
   level: number;
   tasks: Task[];
