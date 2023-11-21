@@ -4,6 +4,8 @@ export type Task = {
   title: string;
   description: string;
   points: number;
+  status: string;
+  dueDate: string;
 };
 
 type User = {

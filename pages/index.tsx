@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header from '../components/Header';
-import AddTaskDialog from '../components/AddTaskDialog';
+import TaskItem from '../components/TaskItem';
 import { useContext } from 'react';
 import { UserContext, Task } from '../components/UserContext';
 
@@ -29,12 +29,7 @@ export default function Home() {
       <Header />
       <div className="flex-grow">
         {user.tasks.map((task, index) => (
-          <div key={index}>
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <p>{task.points}</p>
-            <AddTaskDialog taskToEdit={task} onEdit={handleEdit} onDelete={handleDelete} index={index} />
-          </div>
+          <TaskItem key={index} task={task} index={index} onEdit={handleEdit} onDelete={handleDelete} />
         ))}
       </div>
     </main>
