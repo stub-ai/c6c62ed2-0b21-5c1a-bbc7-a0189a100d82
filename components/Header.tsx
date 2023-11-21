@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from './UserContext';
+import AddTaskDialog from './AddTaskDialog';
 
 const Header: React.FC = () => {
   const { user } = useContext(UserContext);
@@ -14,7 +15,7 @@ const Header: React.FC = () => {
           <p>Points: {user.points}</p>
           <p>Level: {user.level}</p>
         </div>
-        <button className="mr-2 bg-green-500 px-4 py-2 rounded">Add</button>
+        <AddTaskDialog />
         <button className="bg-yellow-500 px-4 py-2 rounded">Shop</button>
       </div>
     </header>
