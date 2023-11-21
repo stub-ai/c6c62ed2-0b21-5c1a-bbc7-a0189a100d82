@@ -41,10 +41,12 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const updateUserPointsAndLevel = (task: Task) => {
     if (task.status === 'Complete') {
+      const newPoints = user.points + task.points;
+      const newLevel = Math.floor(newPoints / 100) + 1;
       setUser(prevUser => ({
         ...prevUser,
-        points: prevUser.points + task.points,
-        level: Math.floor((prevUser.points + task.points) / 100)
+        points: newPoints,
+        level: newLevel
       }));
     }
   };
