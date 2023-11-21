@@ -10,6 +10,7 @@ const Header: React.FC = () => {
     <header className="flex justify-between items-center p-5 bg-blue-500 text-white">
       <div>
         <h1 className="text-2xl font-bold">Gamified Todo</h1>
+        <p>Welcome, {user.username}</p>
       </div>
       <div className="flex items-center">
         <div className="mr-4">
