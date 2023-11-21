@@ -11,7 +11,7 @@ interface AddTaskDialogProps {
 const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, onDelete, index }) => {
   const { user, setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [task, setTask] = useState<Task>(taskToEdit || { title: '', description: '', points: 0 });
+  const [task, setTask] = useState<Task>(taskToEdit || { title: '', description: '', points: 0, status: '', dueDate: '' });
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -36,7 +36,7 @@ const AddTaskDialog: React.FC<AddTaskDialogProps> = ({ taskToEdit, onEdit, onDel
         points: prevUser.points + task.points
       }));
     }
-    setTask({ title: '', description: '', points: 0 });
+    setTask({ title: '', description: '', points: 0, status: '', dueDate: '' });
     handleClose();
   };
 
